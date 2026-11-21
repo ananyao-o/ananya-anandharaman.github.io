@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ananya Anandharaman</title>
+  <meta name="description" content="Geophysicist, GW Researcher, Data Scientist — IIT ISM · IUCAA · University of Glasgow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Sora:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">Ananya A.</a>
+    <ul class="nav-links">
+      <li><a href="#space">Home</a></li>
+      <li><a href="#cosmos">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#surface">Projects</a></li>
+      <li><a href="#crust">Workshops</a></li>
+      <li><a href="#mantle">Honours</a></li>
+      <li><a href="#core">Contact</a></li>
+      <li><a href="media.html">Media</a></li>
+    </ul>
+    <button class="nav-cv-btn" id="cv-btn">CV ↗</button>
+  </nav>
+  <div id="depth-bar">
+    <div class="depth-dot" data-section="space"    data-label="Deep Space"></div>
+    <div class="depth-dot" data-section="cosmos"   data-label="Cosmos"></div>
+    <div class="depth-dot" data-section="research" data-label="Research"></div>
+    <div class="depth-dot" data-section="surface"  data-label="Surface"></div>
+    <div class="depth-dot" data-section="crust"    data-label="Crust"></div>
+    <div class="depth-dot" data-section="mantle"   data-label="Mantle"></div>
+    <div class="depth-dot" data-section="core"     data-label="Core"></div>
+  </div>
+  <canvas id="wave-canvas"></canvas>
+  <div id="wave-ann" role="status" aria-live="polite">
+    <div class="wave-ann-bar"></div>
+    <span class="wave-ann-name"></span>
+    <span class="wave-ann-sep">·</span>
+    <span class="wave-ann-desc"></span>
+  </div>
+  <div id="wave-label"><span id="wave-type-text">Gravitational Waves</span></div>
+  <!-- §1 DEEP SPACE -->
+  <section id="space" data-wave="gw">
+    <canvas id="starfield-canvas"></canvas>
+    <canvas id="cbc-canvas"></canvas>
+    <div class="section-content space-content fade-in" id="hero-content"></div>
+    <div class="scroll-cue">Journey inward</div>
+  </section>
+  <!-- §2 COSMOS / ABOUT -->
+  <section id="cosmos" data-wave="radio">
+    <canvas id="constellation-canvas"></canvas>
+    <div class="section-content fade-in" id="about-content"></div>
+  </section>
+  <!-- §3 RESEARCH -->
+  <section id="research" data-wave="infra">
+    <div class="section-content fade-in">
+      <div class="section-eyebrow">Upper atmosphere · 100 km</div>
+      <h2 class="section-title">Main research</h2>
+      <p class="section-body">Major projects I've worked on so far spanning seismology, GW data analysis, and multi-wavelength astrophysics.</p>
+      <div class="cards-grid" id="research-cards"></div>
+    </div>
+  </section>
+  <!-- §4 SURFACE / SIDE PROJECTS -->
+  <section id="surface" data-wave="seismic-noisy">
+    <canvas id="surface-canvas"></canvas>
+    <div class="section-content surface-content fade-in">
+      <div class="section-eyebrow">Surface · 0 km</div>
+      <h2 class="section-title surface-title">Side projects</h2>
+      <p class="section-body surface-body">What was that about curiosity and cats again? </p>
+      <div class="side-projects-grid" id="side-projects-cards"></div>
+    </div>
+  </section>
+  <!-- §5 CRUST / WORKSHOPS -->
+  <section id="crust" data-wave="seismic">
+    <div class="section-content crust-content fade-in">
+      <div class="section-eyebrow crust-label">Crust · 0 to 35 km</div>
+      <h2 class="section-title crust-title">Scientific Outreach &amp; Blog</h2>
+      <p class="section-body crust-body">I believe storytelling has the power to inspire and connect, whether it's through science or the incredible stories of everyday people.</p>
+      <div class="workshops-grid" id="workshops-cards"></div>
+    </div>
+  </section>
+  <!-- §6 MANTLE / HONOURS -->
+  <section id="mantle" data-wave="seismic-deep">
+    <canvas id="mantle-canvas"></canvas>
+    <div class="section-content mantle-content fade-in">
+      <div class="section-eyebrow mantle-label">Mantle · 35 to 2,900 km</div>
+      <h2 class="section-title mantle-title">Certifications &amp; Honours</h2>
+      <p class="section-body mantle-body">A few things earned along the way. The mantle is restless and so am I.</p>
+      <div class="cert-grid" id="cert-cards"></div>
+      <p class="interaction-hint">Tap or click anywhere in this layer to trigger an earthquake</p>
+    </div>
+  </section>
+  <!-- §7 CORE / CONTACT -->
+  <section id="core" data-wave="modes">
+    <canvas id="core-canvas"></canvas>
+    <div class="section-content core-content fade-in">
+      <div class="section-eyebrow core-label">Earth's Inner Core · 6,371 km down</div>
+      <h2 class="section-title core-title">Get in touch</h2>
+      <p class="section-body core-body">Open to collaborations, research opportunities, and interesting conversations.</p>
+      <div class="contact-links" id="contact-links"></div>
+      <p class="core-footer">Ananya Anandharaman · 2026 </p>
+    </div>
+  </section>
+  <!-- Scripts — config must be first -->
+  <script src="js/config.js"></script>
+  <script src="js/starfield.js"></script>
+  <script src="js/cbc.js"></script>
+  <script src="js/constellations.js"></script>
+  <script src="js/surface.js"></script>
+  <script src="js/mantle.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/waves.js"></script>
+  <script src="js/earthquake.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

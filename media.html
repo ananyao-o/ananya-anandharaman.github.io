@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media — Ananya Anandharaman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Sora:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    body { background: #060912; }
+    #media-stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+    .media-hero {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 130px 40px 60px;
+    }
+    .media-hero .section-eyebrow { color: #C4A882; margin-bottom: 12px; }
+    .media-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 700;
+      color: #E8EDF5;
+      margin-bottom: 12px;
+    }
+    .media-hero p { color: rgba(232,237,245,0.55); font-size: 14px; max-width: 500px; margin: 0 auto; }
+
+    /* Gallery container */
+    .gallery-section {
+      position: relative;
+      z-index: 5;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 60px;
+    }
+    .gallery-section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-top: 48px;
+      border-top: 0.5px solid rgba(107,159,212,0.12);
+    }
+    .gallery-section-header:first-child { border-top: none; }
+    .gallery-cat-icon { font-size: 20px; }
+    .gallery-cat-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: #E8EDF5;
+    }
+    .gallery-cat-count {
+      font-size: 11px;
+      color: rgba(232,237,245,0.35);
+      letter-spacing: 0.08em;
+    }
+
+    /* Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    /* Image card */
+    .media-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      background: #1a2035;
+      border: 0.5px solid rgba(107,159,212,0.15);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .media-card:hover {
+      border-color: rgba(107,159,212,0.45);
+      transform: translateY(-3px);
+    }
+    .media-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.3s;
+    }
+    .media-card-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 12px;
+      background: linear-gradient(to top, rgba(6,9,18,0.85) 0%, transparent 100%);
+      font-size: 11.5px;
+      color: rgba(232,237,245,0.85);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .media-card:hover .media-card-caption { opacity: 1; }
+
+    /* Placeholder card (no image yet) */
+    .media-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1.5px dashed rgba(107,159,212,0.2);
+      background: rgba(107,159,212,0.03);
+      cursor: default;
+    }
+    .media-placeholder:hover { transform: none; border-color: rgba(107,159,212,0.3); }
+    .placeholder-icon { font-size: 24px; opacity: 0.4; }
+    .placeholder-label {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(232,237,245,0.3);
+      text-align: center;
+      padding: 0 12px;
+      line-height: 1.5;
+    }
+    .placeholder-file {
+      font-size: 9px;
+      color: rgba(107,159,212,0.4);
+      font-family: monospace;
+      text-align: center;
+      padding: 0 10px;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      cursor: pointer;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    #lightbox-caption {
+      font-size: 13px;
+      color: rgba(232,237,245,0.65);
+      text-align: center;
+    }
+    #lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 26px;
+      color: rgba(232,237,245,0.5);
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(107,159,212,0.7);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      margin-top: 48px;
+      padding-bottom: 60px;
+    }
+    .back-link:hover { color: #6B9FD4; }
+
+    /* Empty state */
+    .gallery-empty {
+      grid-column: 1 / -1;
+      padding: 30px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(232,237,245,0.3);
+      border: 1px dashed rgba(255,255,255,0.07);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared nav -->
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">Ananya A.</a>
+    <ul class="nav-links">
+      <li><a href="index.html#space">Home</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="index.html#surface">Projects</a></li>
+      <li><a href="index.html#core">Contact</a></li>
+      <li><a href="media.html" class="active">Media</a></li>
+    </ul>
+    <button class="nav-cv-btn" id="cv-btn">CV ↗</button>
+  </nav>
+
+  <canvas id="media-stars"></canvas>
+
+  <!-- Hero -->
+  <div class="media-hero">
+    <div class="section-eyebrow">Visual archive</div>
+    <h1>Media</h1>
+    <p>Field work, conferences, outreach — and everything in between.</p>
+  </div>
+
+  <!-- Gallery — rendered by main.js / media section of config -->
+  <div id="gallery-root"></div>
+
+  <div style="position:relative;z-index:5;text-align:center;">
+    <a href="index.html" class="back-link">← Back to main site</a>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <span id="lightbox-close">✕</span>
+    <img id="lightbox-img" src="" alt="">
+    <div id="lightbox-caption"></div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    // Minimal star canvas for media page background
+    if (window.SITE_CONFIG && !SITE_CONFIG.showMedia) location.replace('index.html');
+    (function() {
+      const c = document.getElementById('media-stars');
+      const ctx = c.getContext('2d');
+      let stars = [];
+      function init() {
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        stars = Array.from({length: 200}, () => ({
+          x: Math.random() * c.width, y: Math.random() * c.height,
+          r: Math.random() * 1.2 + 0.2, a: Math.random() * 0.6 + 0.1,
+          phase: Math.random() * Math.PI * 2
+        }));
+      }
+      let t = 0;
+      function draw() {
+        ctx.clearRect(0, 0, c.width, c.height);
+        t += 0.006;
+        stars.forEach(s => {
+          const alpha = s.a * (0.5 + 0.5 * Math.sin(t + s.phase));
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(200,220,255,${alpha})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      init();
+      window.addEventListener('resize', init);
+      requestAnimationFrame(draw);
+    })();
+
+    // CV button
+    document.getElementById('cv-btn').addEventListener('click', () => {
+      if (window.SITE_CONFIG && SITE_CONFIG.contact.cv) window.open(SITE_CONFIG.contact.cv);
+    });
+
+    // Render gallery from config
+    document.addEventListener('DOMContentLoaded', () => {
+      const root = document.getElementById('gallery-root');
+      if (!window.SITE_CONFIG || !SITE_CONFIG.media) return;
+
+      SITE_CONFIG.media.forEach(cat => {
+        const sec = document.createElement('div');
+        sec.className = 'gallery-section';
+
+        const header = document.createElement('div');
+        header.className = 'gallery-section-header';
+        header.innerHTML = `
+          <span class="gallery-cat-icon">${cat.icon}</span>
+          <span class="gallery-cat-title">${cat.name}</span>
+          <span class="gallery-cat-count">${cat.items.filter(i => i.file).length} / ${cat.items.length} images</span>
+        `;
+        sec.appendChild(header);
+
+        const grid = document.createElement('div');
+        grid.className = 'gallery-grid';
+
+        if (cat.items.length === 0) {
+          grid.innerHTML = `<div class="gallery-empty">No items yet — add entries to SITE_CONFIG.media in js/config.js</div>`;
+        } else {
+          cat.items.forEach(item => {
+            const card = document.createElement('div');
+            if (item.file) {
+              card.className = 'media-card';
+              card.innerHTML = `
+                <img src="${item.file}" alt="${item.caption || ''}" loading="lazy"
+                  onerror="this.parentElement.outerHTML=\`<div class='media-card media-placeholder'><span class='placeholder-icon'>🖼️</span><p class='placeholder-label'>${item.caption || 'Image'}</p><p class='placeholder-file'>${item.file}</p></div>\`">
+                <div class="media-card-caption">${item.caption || ''}<br><span style="opacity:0.5;font-size:10px">${item.date || ''}</span></div>
+              `;
+              card.addEventListener('click', () => openLightbox(item.file, item.caption));
+            } else {
+              card.className = 'media-card media-placeholder';
+              card.innerHTML = `
+                <span class="placeholder-icon">📷</span>
+                <p class="placeholder-label">${item.caption || 'Add image here'}</p>
+                <p class="placeholder-file">${item.placeholder || 'Drop image in assets/media/'}</p>
+              `;
+            }
+            grid.appendChild(card);
+          });
+        }
+        sec.appendChild(grid);
+        root.appendChild(sec);
+      });
+    });
+
+    // Lightbox
+    function openLightbox(src, caption) {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption || '';
+      lb.classList.add('open');
+    }
+    document.getElementById('lightbox').addEventListener('click', () => {
+      document.getElementById('lightbox').classList.remove('open');
+    });
+    document.getElementById('lightbox-close').addEventListener('click', e => {
+      e.stopPropagation();
+      document.getElementById('lightbox').classList.remove('open');
+    });
+  </script>
+</body>
+</html>

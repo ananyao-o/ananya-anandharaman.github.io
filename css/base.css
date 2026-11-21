@@ -1,0 +1,317 @@
+/* ════════════════════════════════════════════
+   BASE.CSS — reset, typography, nav, utilities
+   ════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #000;
+  color: #E8EDF5;
+  overflow-x: hidden;
+}
+
+/* ── Typography helpers ── */
+.section-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  opacity: 0.6;
+  display: block;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.5vw, 46px);
+  font-weight: 700;
+  line-height: 1.15;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.section-body {
+  font-size: 14.5px;
+  color: rgba(232,237,245,0.58);
+  max-width: 600px;
+  margin: 14px auto 0;
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* ── Nav ── */
+nav#main-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 40px;
+  background: rgba(4, 6, 18, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  gap: 20px;
+  transition: background 0.4s;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  color: #6B9FD4;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-links {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+  flex: 1;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(232,237,245,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: #6B9FD4; }
+.nav-cv-btn {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 5px;
+  background: rgba(107,159,212,0.12);
+  border: 0.5px solid rgba(107,159,212,0.35);
+  color: #6B9FD4;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.nav-cv-btn:hover { background: rgba(107,159,212,0.25); }
+
+/* ── Depth bar ── */
+#depth-bar {
+  position: fixed;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 90;
+}
+.depth-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.22);
+  background: transparent;
+  transition: background 0.3s, border-color 0.3s, transform 0.2s;
+  cursor: pointer;
+  position: relative;
+}
+.depth-dot::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.depth-dot:hover::after { opacity: 1; }
+.depth-dot:hover { transform: scale(1.5); }
+.depth-dot.active {
+  background: rgba(255,255,255,0.75);
+  border-color: rgba(255,255,255,0.75);
+}
+
+/* ── Global wave canvas ── */
+#wave-canvas {
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 50;
+  pointer-events: none;
+}
+#wave-label {
+  position: fixed;
+  bottom: 12px;
+  right: 20px;
+  z-index: 55;
+  pointer-events: none;
+}
+#wave-type-text {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  font-family: var(--font-display);
+}
+
+/* ── Section layout ── */
+section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 40px 130px;
+}
+.section-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 20px;
+}
+
+/* ── Scroll cue ── */
+.scroll-cue {
+  position: absolute;
+  bottom: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(232,237,245,0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: bounce 2.4s ease-in-out infinite;
+}
+.scroll-cue::after { content: '↓'; font-size: 13px; }
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ── Fade-in on scroll ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Earthquake animation ── */
+@keyframes quake {
+  0%   { transform: translate(0,0) rotate(0); }
+  8%   { transform: translate(-10px,5px) rotate(-0.6deg); }
+  18%  { transform: translate(10px,-7px) rotate(0.7deg); }
+  28%  { transform: translate(-8px,8px) rotate(-0.5deg); }
+  38%  { transform: translate(9px,-4px) rotate(0.4deg); }
+  48%  { transform: translate(-5px,7px) rotate(-0.3deg); }
+  58%  { transform: translate(7px,-5px) rotate(0.3deg); }
+  68%  { transform: translate(-4px,4px) rotate(-0.2deg); }
+  78%  { transform: translate(4px,-3px) rotate(0.2deg); }
+  88%  { transform: translate(-2px,2px) rotate(-0.1deg); }
+  100% { transform: translate(0,0) rotate(0); }
+}
+.quaking { animation: quake 1.4s ease-out; }
+
+/* ── Interaction hint ── */
+.interaction-hint {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,200,100,0.45);
+  margin-top: 28px;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(107,159,212,0.2); border-radius: 2px; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  nav#main-nav { padding: 12px 20px; }
+  .nav-links { display: none; }
+  #depth-bar { display: none; }
+  section { padding: 90px 24px 110px; }
+}
+
+/* ── Wave-type announcement bubble ──────────────────────────────
+   Appears briefly when the waveform changes section.
+   Shows wave type name + scientific description.             */
+#wave-ann {
+  position: fixed;
+  bottom: 116px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px 9px 14px;
+  background: rgba(8, 10, 24, 0.72);
+  border: 0.5px solid rgba(255,255,255,0.13);
+  border-radius: 28px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  transition: opacity 0.38s ease, transform 0.38s ease;
+  transform: translateX(-50%) translateY(6px);
+  white-space: nowrap;
+}
+#wave-ann.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.wave-ann-bar {
+  width: 3px;
+  height: 26px;
+  border-radius: 2px;
+  background: #6B9FD4;
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+.wave-ann-name {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(232,237,245,0.92);
+}
+.wave-ann-sep {
+  font-size: 10px;
+  color: rgba(232,237,245,0.28);
+}
+.wave-ann-desc {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: rgba(232,237,245,0.48);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  #wave-ann { bottom: 108px; max-width: calc(100vw - 40px); }
+  .wave-ann-desc { display: none; }
+}

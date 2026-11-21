@@ -1,0 +1,61 @@
+/* THEME.CSS — design tokens + visual layer. Loaded last.
+   Fonts: change --font-display below (e.g. 'Sora', sans-serif) to restyle every heading. */
+:root{--font-display:'Sora',system-ui,sans-serif;--font-body:'DM Sans',system-ui,sans-serif;--glass:rgba(10,8,22,.45);--glass-line:rgba(255,255,255,.16)}
+html{background:#04030c}
+body{font-family:var(--font-body);color:#fff;background:linear-gradient(180deg,#04030c 0%,#0a0724 12%,#141040 24%,#1a2a72 33%,#1f4f96 40%,#3a7ab0 44%,#6a86b8 47%,#a07fa8 50%,#d98a7a 53%,#ef9f5c 56%,#cf6f3a 60%,#9a4a28 64%,#6e3320 68%,#4d2418 73%,#3a1a12 78%,#4a1a0e 82%,#7a2410 87%,#b93a10 91%,#e0641a 95%,#f5a31f 100%)}
+
+.section-title,.hero-name,.nav-logo{font-family:var(--font-display);font-weight:700;letter-spacing:-.02em}
+.section-title{font-size:clamp(38px,5.4vw,64px);line-height:1.05;max-width:900px;color:#fff}
+.section-eyebrow{font-size:13px;letter-spacing:.16em;font-weight:700;opacity:1;color:#ffd9a0}
+.section-body{font-size:18px;line-height:1.65;color:rgba(255,255,255,.92);max-width:640px}
+.hero-eyebrow{font-size:14px;font-weight:700;color:#ffd9a0}
+.hero-name{font-size:clamp(52px,9vw,110px);line-height:1;color:#fff}
+.hero-name span{color:#8fc1ff}
+/*.hero-subtitle{font-size:16px;color:rgba(255,255,255,.78)}*/
+.hero-subtitle{display: none;}
+.hero-note{font-family:var(--font-display);font-size:clamp(20px,2.4vw,28px);line-height:1.35;color:rgba(255,255,255,.95);letter-spacing:0;margin:0 0 24px}
+.htag{font-size:13px;padding:7px 15px;color:#fff;border-color:rgba(255,255,255,.3);background:rgba(10,8,22,.4)}
+.btn-primary,.btn-ghost,.nav-cv-btn{font-family:var(--font-body);font-weight:700}
+.btn-primary,.btn-ghost{font-size:15px;padding:13px 28px}
+
+nav#main-nav{padding:16px 40px;background:rgba(6,4,16,.55)}
+.nav-logo{font-size:22px;color:#fff}
+.nav-links a{font-size:12px;font-weight:700;color:rgba(255,255,255,.78)}
+.nav-links a:hover,.nav-links a.active{color:#ffd9a0}
+.nav-cv-btn{color:#fff;border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.08)}
+.depth-dot::after{font-size:11px}
+.nav-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:8px;padding:6px 12px;font:700 13px var(--font-body);cursor:pointer}
+
+.rcard,.scard,.wcard,.cert-card,.about-cell{background:var(--glass);border:1px solid var(--glass-line);border-radius:14px;padding:24px 26px;color:#fff;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:none}
+.scard{background:rgba(10,8,22,.58)}
+.rcard:hover,.scard:hover,.wcard:hover{border-color:rgba(255,255,255,.4);transform:translateY(-4px)}
+.rcard h3,.scard h3,.wcard h3{font-family:var(--font-display);font-weight:700;font-size:22px;line-height:1.25;color:#fff;margin-bottom:10px}
+.rcard p,.scard p,.wcard p,.cert-card p,.about-cell-value{font-size:15.5px;line-height:1.65;color:rgba(255,255,255,.9)}
+.rcard-badge,.rcard-badge.warm,.rcard-badge.blue,.wcard-year,.about-cell-label,.cert-card-label{font-size:12px;letter-spacing:.12em;font-weight:700;color:#ffd9a0;background:none;border:none;padding:0;border-radius:0}
+.rcard-badge{margin-bottom:12px}
+.tool-chip{font-size:12px;padding:3px 10px;border-radius:20px;color:#fff;background:none;border:1px solid rgba(255,255,255,.3)}
+.scard-icon{font-size:30px}
+.scard-link,.rcard-link{color:#ffd9a0;font-size:13px}
+.contact-link{font-size:16px;font-weight:500;padding:14px 22px;color:#fff;border-color:rgba(255,235,170,.45)}
+.interaction-hint{font-size:13px;font-weight:700;color:#ffe9b0}
+
+#wave-canvas{background:rgba(6,4,16,.55);border-top:1px solid rgba(255,255,255,.18)}
+#wave-label{display:none}
+#wave-ann,#wave-ann.visible{left:28px;bottom:112px;transform:none}
+#wave-ann{padding:9px 18px 9px 14px;background:rgba(8,6,20,.78);border-color:rgba(255,255,255,.24)}
+.wave-ann-bar{width:10px;height:10px;border-radius:50%;animation:annp 1.6s infinite}
+.wave-ann-name{font-family:var(--font-body);font-size:14px}
+.wave-ann-desc{font-size:13px;font-style:normal;color:rgba(255,255,255,.78)}
+#wave-ann.flash{animation:annf .7s}
+@keyframes annp{from{box-shadow:0 0 0 0 var(--c)}to{box-shadow:0 0 0 10px transparent}}
+@keyframes annf{0%{transform:scale(1.12)}100%{transform:scale(1)}}
+
+@media(max-width:768px){
+  .nav-toggle{display:block;margin-left:auto}
+  nav#main-nav.open .nav-links{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:18px;padding:22px 24px;background:rgba(6,4,16,.96)}
+  .nav-links a{font-size:15px}
+  .hero-ctas{flex-wrap:wrap}
+  #wave-ann,#wave-ann.visible{left:14px;bottom:106px}
+  .wave-ann-desc,.wave-ann-sep{display:none}
+  .rcard,.scard,.wcard{padding:20px}
+}

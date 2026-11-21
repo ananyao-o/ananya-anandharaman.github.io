@@ -1,0 +1,142 @@
+/* ════════════════════════════════════════════
+   COMPONENTS.CSS — buttons, cards, contact, hero
+   ════════════════════════════════════════════ */
+
+/* ── Hero ── */
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #C4A882; margin-bottom: 18px; display: block;
+}
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6.5vw, 78px);
+  font-weight: 700; line-height: 1.05; color: #E8EDF5; margin-bottom: 10px;
+}
+.hero-name span { color: #6B9FD4; }
+.hero-subtitle { font-size: 13px; color: rgba(232,237,245,0.42); letter-spacing: 0.05em; margin-bottom: 22px; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 28px; }
+.htag {
+  font-size: 10px; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 20px;
+  border: 0.5px solid rgba(107,159,212,0.32); color: rgba(107,159,212,0.82);
+  background: rgba(107,159,212,0.07);
+}
+.hero-ctas { display: flex; gap: 12px; justify-content: center; }
+.hero-note { margin-top: 14px; font-size: 10px; color: rgba(232,237,245,0.22); letter-spacing: 0.05em; }
+
+/* ── Buttons ── */
+.btn-primary {
+  font-family: var(--font-display); font-size: 13px; font-weight: 600;
+  padding: 11px 24px; border-radius: 6px; background: #6B9FD4; color: #0A0E1A;
+  border: none; cursor: pointer; transition: opacity 0.2s; text-decoration: none; display: inline-block;
+}
+.btn-primary:hover { opacity: 0.88; }
+.btn-ghost {
+  font-family: var(--font-display); font-size: 13px; font-weight: 500;
+  padding: 11px 24px; border-radius: 6px; background: transparent;
+  color: rgba(232,237,245,0.7); border: 0.5px solid rgba(232,237,245,0.22);
+  cursor: pointer; transition: border-color 0.2s, color 0.2s; text-decoration: none; display: inline-block;
+}
+.btn-ghost:hover { border-color: rgba(232,237,245,0.45); color: rgba(232,237,245,0.9); }
+
+/* ── About grid ── */
+.about-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+  gap: 12px; max-width: 780px; margin: 28px auto 0;
+}
+.about-cell {
+  background: rgba(107,159,212,0.07); border: 0.5px solid rgba(107,159,212,0.18);
+  border-radius: 10px; padding: 16px; text-align: left;
+}
+.about-cell-label { font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B9FD4; margin-bottom: 7px; display: block; }
+.about-cell-value { font-size: 12px; color: rgba(232,237,245,0.72); line-height: 1.65; }
+
+/* ── Research cards ── */
+.cards-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 16px; max-width: 1060px; margin: 36px auto 0;
+}
+.rcard {
+  background: rgba(20,30,60,0.65); border: 0.5px solid rgba(107,159,212,0.18);
+  border-radius: 12px; padding: 24px; text-align: left;
+  backdrop-filter: blur(8px); transition: border-color 0.3s, transform 0.3s;
+}
+.rcard:hover { border-color: rgba(107,159,212,0.45); transform: translateY(-4px); }
+.rcard-badge {
+  display: inline-block; font-size: 9.5px; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 3px 9px; border-radius: 20px; margin-bottom: 13px;
+}
+.rcard-badge.warm { color: #C4A882; background: rgba(196,168,130,0.1); border: 0.5px solid rgba(196,168,130,0.3); }
+.rcard-badge.blue { color: #6B9FD4; background: rgba(107,159,212,0.1); border: 0.5px solid rgba(107,159,212,0.3); }
+.rcard h3 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: #E8EDF5; margin-bottom: 9px; line-height: 1.4; }
+.rcard p  { font-size: 12px; color: rgba(232,237,245,0.55); line-height: 1.72; margin-bottom: 14px; }
+.tool-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.tool-chip {
+  font-size: 9.5px; padding: 2px 8px; border-radius: 4px;
+  background: rgba(107,159,212,0.08); color: rgba(107,159,212,0.72);
+  border: 0.5px solid rgba(107,159,212,0.18);
+}
+.rcard-link { font-size: 11px; color: #6B9FD4; text-decoration: none; letter-spacing: 0.04em; opacity: 0.7; flex-shrink: 0; margin-left: 10px; }
+.rcard-link:hover { opacity: 1; }
+
+/* ── Side project cards (surface section — light bg) ── */
+.side-projects-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 14px; max-width: 960px; margin: 32px auto 0;
+}
+.scard {
+  background: rgba(255,248,235,0.88);
+  border: 0.5px solid rgba(160,100,40,0.18);
+  border-radius: 12px; padding: 22px; text-align: left;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.14);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.scard:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+.scard-icon { width: 44px; height: 44px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.scard h3  { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: #0d1f3a; margin-bottom: 7px; }
+.scard p   { font-size: 12px; color: rgba(10,25,55,0.64); line-height: 1.67; margin-bottom: 12px; }
+.scard-link { font-size: 11px; color: #2a5a8a; text-decoration: none; letter-spacing: 0.04em; }
+.scard-link:hover { text-decoration: underline; }
+
+/* ── Workshop / blog cards (crust section — dark warm bg) ── */
+.workshops-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px; max-width: 900px; margin: 32px auto 0;
+}
+.wcard {
+  background: rgba(200, 120, 55, 0.16);
+  border: 0.5px solid rgba(230, 150, 80, 0.32);
+  border-radius: 12px; padding: 22px; text-align: left;
+  transition: border-color 0.25s, background 0.25s;
+}
+.wcard:hover { border-color: rgba(255,180,100,0.5); background: rgba(200,120,55,0.22); }
+.wcard-year  { font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,185,105,0.72); margin-bottom: 8px; display: block; }
+.wcard h3    { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: #faebd5; margin-bottom: 8px; }
+.wcard p     { font-size: 12px; color: rgba(248,218,178,0.76); line-height: 1.68; }
+
+/* ── Certification cards (mantle section — hot bg) ── */
+.cert-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px; max-width: 840px; margin: 28px auto 0;
+}
+.cert-card {
+  background: rgba(0,0,0,0.30);
+  border: 0.5px solid rgba(255,155,55,0.30);
+  border-radius: 10px; padding: 18px; text-align: left;
+  transition: border-color 0.25s;
+}
+.cert-card:hover { border-color: rgba(255,175,80,0.55); }
+.cert-card-label { font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,175,85,0.88); margin-bottom: 9px; display: block; }
+.cert-card p     { font-size: 12px; color: rgba(255,225,155,0.82); line-height: 1.72; }
+
+/* ── Contact links (core section — golden bg) ── */
+.contact-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 34px; }
+.contact-link {
+  display: flex; align-items: center; gap: 10px; padding: 12px 20px;
+  border-radius: 10px; border: 0.5px solid rgba(255,215,85,0.28);
+  background: rgba(0,0,0,0.40); color: rgba(255,238,175,0.88);
+  font-size: 13px; text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+  backdrop-filter: blur(8px);
+}
+.contact-link:hover { background: rgba(0,0,0,0.58); border-color: rgba(255,215,85,0.55); color: #ffe9a8; }
+.contact-link svg { width: 18px; height: 18px; flex-shrink: 0; opacity: 0.82; }
