@@ -18,6 +18,6 @@ The site is a scroll from deep space down to the Earth's core, with waves that c
 - Email: ananya.anandharaman@lmu.de
 - LinkedIn: [ananya-anandharaman](https://www.linkedin.com/in/ananya-anandharaman-428184238/)
 
-*Writing, music, and a future filled with cats and telescopes.*
+*Writing, music, and a future filled with cats and coffees.*
 
 ---
