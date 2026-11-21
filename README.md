@@ -12,9 +12,9 @@ I'm a PhD researcher in seismology at **LMU Munich** (RING project), with an Int
 ### Visit the site
 The site is a scroll from deep space down to the Earth's core, with waves that change as you go.
 
-👉 **[Open the website](https://ananya-anandharaman.github.io)**
+**[Open the website](https://ananya-anandharaman.github.io)**
 
-### 📬 Say hello
+### Say hello
 - Email: ananya.anandharaman@lmu.de
 - LinkedIn: [ananya-anandharaman](https://www.linkedin.com/in/ananya-anandharaman-428184238/)
 
