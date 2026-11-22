@@ -125,6 +125,7 @@ window.SITE_CONFIG = {
     github:       "https://github.com/ananyao-o",
     githubHandle: "ananyao-o",
     linkedin:     "https://www.linkedin.com/in/ananya-anandharaman-428184238/",
+    cv:           "assets/cv/Ananya_Anandharaman_Resume.pdf",
   },
 
   /* ── Vehicles ───────────────────────────────────────────────────────────
